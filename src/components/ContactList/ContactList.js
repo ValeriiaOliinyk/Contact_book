@@ -6,16 +6,17 @@ import { connect } from 'react-redux';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
   <ul className={styles.list}>
-    {contacts.map(({ name, number, id }) => (
-      <li key={id} className={styles.item}>
-        <Contact
-          name={name}
-          number={number}
-          onDeleteContact={() => onDeleteContact(id)}
-          id={id}
-        />
-      </li>
-    ))}
+    {contacts &&
+      contacts.map(({ name, number, id }) => (
+        <li key={id} className={styles.item}>
+          <Contact
+            name={name}
+            number={number}
+            onDeleteContact={() => onDeleteContact(id)}
+            id={id}
+          />
+        </li>
+      ))}
   </ul>
 );
 
@@ -26,7 +27,7 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     }),
-  ).isRequired,
+  ),
   onDeleteContact: PropTypes.func.isRequired,
 };
 

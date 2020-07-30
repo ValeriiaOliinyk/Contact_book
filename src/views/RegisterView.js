@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { authOperations } from '../redux/auth';
 
 const styles = {
   form: {
@@ -80,8 +81,8 @@ class RegisterView extends Component {
   }
 }
 
-// const mapDispatchToProps = {
-//   onRegister: authOperations.register,
-// };
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+};
 
-export default connect(null, null)(RegisterView);
+export default connect(null, mapDispatchToProps)(RegisterView);

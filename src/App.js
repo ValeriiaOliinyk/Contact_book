@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // Components
 import Container from '../src/components/Container';
-import AppBar from '../src/components/AppBar';
+import AppBar from './components/AppBar';
 import PhonebookView from '../src/views/PhonebookView';
 import HomeView from '../src/views/HomeView';
 import RegisterView from '../src/views/RegisterView';

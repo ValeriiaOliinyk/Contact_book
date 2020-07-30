@@ -1,7 +1,7 @@
 import axios from 'axios';
-// import authActions from './auth-actions';
+import authActions from './auth-actions';
 
-axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 
 const token = {
   set(token) {
@@ -12,7 +12,13 @@ const token = {
   },
 };
 
-const register = credentials => dispatch => {};
+const register = credentials => dispatch => {
+  dispatch(authActions.registerRequest());
+  axios
+    .post('/users/signup', credentials)
+    .then(response => dispatch(authActions.registerSuccess(response.data)))
+    .catch(error => dispatch(authActions.registerError(error)));
+};
 
 const logIn = credentials => dispatch => {};
 
