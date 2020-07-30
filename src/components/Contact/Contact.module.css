@@ -1,0 +1,11 @@
+.button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 18px;
+  color: rgb(107, 110, 110);
+  font-weight: 600;
+}

@@ -1,0 +1,26 @@
+.label {
+  display: block;
+  margin-top: 10px;
+}
+
+.input {
+  outline: unset;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid rgb(107, 110, 110);
+  border-radius: 30px;
+}
+
+.form {
+  align-items: center;
+  align-content: center;
+}
+
+.button {
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}

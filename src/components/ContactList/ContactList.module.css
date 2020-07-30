@@ -1,0 +1,14 @@
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.item {
+  text-align: center;
+}
+
+.item + .item {
+  margin-bottom: 30px;
+}
