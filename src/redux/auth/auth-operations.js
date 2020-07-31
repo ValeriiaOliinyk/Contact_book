@@ -16,13 +16,34 @@ const register = credentials => dispatch => {
   dispatch(authActions.registerRequest());
   axios
     .post('/users/signup', credentials)
-    .then(response => dispatch(authActions.registerSuccess(response.data)))
-    .catch(error => dispatch(authActions.registerError(error)));
+    .then(response => {
+      token.set(response.data.token);
+      dispatch(authActions.registerSuccess(response.data));
+    })
+    .catch(error => dispatch(authActions.registerError(error.message)));
 };
 
-const logIn = credentials => dispatch => {};
+const logIn = credentials => dispatch => {
+  dispatch(authActions.loginRequest());
+  axios
+    .post('/users/login', credentials)
+    .then(response => {
+      token.set(response.data.token);
+      dispatch(authActions.loginSuccess(response.data));
+    })
+    .catch(error => dispatch(authActions.loginError(error.message)));
+};
 
-const logOut = credentials => dispatch => {};
+const logOut = () => dispatch => {
+  dispatch(authActions.logoutRequest());
+  axios
+    .post('/users/logout')
+    .then(() => {
+      token.unset();
+      dispatch(authActions.logoutSuccess());
+    })
+    .catch(error => dispatch(authActions.logoutError(error.message)));
+};
 
 const getCurrentUser = (dispatch, getState) => {};
 

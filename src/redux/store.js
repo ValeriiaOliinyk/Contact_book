@@ -9,6 +9,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import phonebookReducer from './phonebook/phonebook-reducer';
+import { authReducer } from './auth';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -21,6 +22,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     contacts: phonebookReducer,
   },
   middleware,

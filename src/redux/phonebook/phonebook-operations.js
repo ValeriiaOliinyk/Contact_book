@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:4040';
-
 const fetchContacts = createAsyncThunk('contact/fetchContacts', async () => {
   return axios
     .get('/contacts')
@@ -29,3 +27,5 @@ const deleteContact = createAsyncThunk('contact/deleteContact', async id => {
 });
 
 export default { fetchContacts, addContact, deleteContact };
+
+//  Проблема : показывает пользователей только когда их больше 2
