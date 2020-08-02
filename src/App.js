@@ -1,29 +1,57 @@
 // Base
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { authOperations } from './redux/auth';
+import { connect } from 'react-redux';
 
 // Components
 import Container from '../src/components/Container';
 import AppBar from './components/AppBar';
-import PhonebookView from '../src/views/PhonebookView';
-import HomeView from '../src/views/HomeView';
-import RegisterView from '../src/views/RegisterView';
-import LoginView from '../src/views/LoginView';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+
+const HomeView = lazy(() => import('../src/views/HomeView'));
+const PhonebookView = lazy(() => import('../src/views/PhonebookView'));
+const RegisterView = lazy(() => import('../src/views/RegisterView'));
+const LoginView = lazy(() => import('../src/views/LoginView'));
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurretnUser();
+  }
   render() {
     return (
       <Container>
         <AppBar />
-        <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/contatcs" component={PhonebookView} />
-        </Switch>
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <PublicRoute
+              path="/register"
+              restricted
+              component={RegisterView}
+              redirectTo="/"
+            />
+            <PublicRoute
+              path="/login"
+              restricted
+              component={LoginView}
+              redirectTo="/contatcs"
+            />
+            <PrivateRoute
+              path="/contatcs"
+              component={PhonebookView}
+              redirectTo="/login"
+            />
+          </Switch>
+        </Suspense>
       </Container>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  onGetCurretnUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);
