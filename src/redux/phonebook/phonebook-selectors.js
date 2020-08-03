@@ -8,10 +8,9 @@ export const getVisibleContacts = createSelector(
   [getAllContatcs, getFilter],
   (contatcs, filter) => {
     const normalizedFilter = filter.toLocaleLowerCase();
-    if (contatcs.length > 1) {
-      return contatcs.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedFilter),
-      );
-    }
+
+    return contatcs.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
   },
 );

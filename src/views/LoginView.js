@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import FormContainer from '../components/FormContainer';
+import Title from '../components/Title';
+import Button from '../components/Button';
+import '../styles/Login.scss';
 
 class LoginView extends Component {
   state = {
@@ -35,37 +28,33 @@ class LoginView extends Component {
     const { email, password } = this.state;
 
     return (
-      <div>
-        <h1>Страница логина</h1>
-
+      <FormContainer>
+        <Title text={'Sign in'} />
         <form
+          className="Login__form"
+          noValidate
           onSubmit={this.handleSubmit}
-          style={styles.form}
           autoComplete="off"
         >
-          <label style={styles.label}>
-            Почта
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label style={styles.label}>
-            Пароль
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit">Войти</button>
+          <input
+            className="Login__input"
+            type="email"
+            name="email"
+            placeholder="Email *"
+            value={email}
+            onChange={this.handleChange}
+          />
+          <input
+            className="Login__input"
+            type="password"
+            name="password"
+            placeholder="Password *"
+            value={password}
+            onChange={this.handleChange}
+          />
+          <Button type="submit" text={'Sign in'}></Button>
         </form>
-      </div>
+      </FormContainer>
     );
   }
 }

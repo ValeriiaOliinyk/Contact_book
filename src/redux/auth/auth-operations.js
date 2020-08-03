@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authActions from './auth-actions';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 

@@ -27,5 +27,3 @@ const deleteContact = createAsyncThunk('contact/deleteContact', async id => {
 });
 
 export default { fetchContacts, addContact, deleteContact };
-
-//  Проблема : показывает пользователей только когда их больше 2

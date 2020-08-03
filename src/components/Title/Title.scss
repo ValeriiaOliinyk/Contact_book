@@ -1,0 +1,15 @@
+@import 'styles/shared.scss';
+
+.Title__box {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.Title__img {
+  width: 50px;
+  height: 50px;
+  background-image: url(./lock.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}

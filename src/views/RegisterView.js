@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import '../styles/Register.scss';
+import FormContainer from '../components/FormContainer';
+import Title from '../components/Title';
 
 class RegisterView extends Component {
   state = {
@@ -36,47 +28,44 @@ class RegisterView extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div>
-        <h1>Страница регистрации</h1>
-
+      <FormContainer>
+        <Title text={'Sign up'} />
         <form
+          className="Register__form"
           onSubmit={this.handleSubmit}
-          style={styles.form}
           autoComplete="off"
         >
-          <label style={styles.label}>
-            Имя
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
+          <input
+            className="Register__input"
+            type="text"
+            name="name"
+            placeholder="Login *"
+            value={name}
+            onChange={this.handleChange}
+          />
 
-          <label style={styles.label}>
-            Почта
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+          <input
+            className="Register__input"
+            type="email"
+            name="email"
+            placeholder="Email *"
+            value={email}
+            onChange={this.handleChange}
+          />
 
-          <label style={styles.label}>
-            Пароль
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit">Зарегистрироваться</button>
+          <input
+            className="Register__input"
+            type="password"
+            name="password"
+            placeholder="Password *"
+            value={password}
+            onChange={this.handleChange}
+          />
+          <button type="submit" className="Register__btn">
+            Sign up
+          </button>
         </form>
-      </div>
+      </FormContainer>
     );
   }
 }
