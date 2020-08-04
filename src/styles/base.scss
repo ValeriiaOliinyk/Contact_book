@@ -42,17 +42,3 @@ label {
   color: #3c6b6e;
   font-weight: 600;
 }
-
-button {
-  outline: none;
-  background-color: #7a8586;
-  border: 1px solid #7a8586;
-  width: 120px;
-  height: 40px;
-  border-radius: 20px;
-  transition: transform 250ms linear;
-}
-
-button:hover {
-  transform: scale(1.1);
-}

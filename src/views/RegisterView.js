@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
-import '../styles/Register.scss';
 import FormContainer from '../components/FormContainer';
 import Title from '../components/Title';
+import Button from '../components/Button';
+import '../styles/Register.scss';
 
 class RegisterView extends Component {
   state = {
@@ -39,8 +40,8 @@ class RegisterView extends Component {
             className="Register__input"
             type="text"
             name="name"
-            placeholder="Login *"
             value={name}
+            placeholder="Login *"
             onChange={this.handleChange}
           />
 
@@ -48,8 +49,8 @@ class RegisterView extends Component {
             className="Register__input"
             type="email"
             name="email"
-            placeholder="Email *"
             value={email}
+            placeholder="Email *"
             onChange={this.handleChange}
           />
 
@@ -61,9 +62,7 @@ class RegisterView extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          <button type="submit" className="Register__btn">
-            Sign up
-          </button>
+          <Button type="submit" text={'Sign up'}></Button>
         </form>
       </FormContainer>
     );

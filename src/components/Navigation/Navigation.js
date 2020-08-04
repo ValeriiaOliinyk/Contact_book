@@ -19,7 +19,7 @@ const styles = {
 const Navigation = ({ isAuthenticated }) => (
   <nav>
     <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
+      Home
     </NavLink>
     {isAuthenticated && (
       <NavLink
@@ -28,7 +28,7 @@ const Navigation = ({ isAuthenticated }) => (
         style={styles.link}
         activeStyle={styles.activeLink}
       >
-        Заметки
+        Phonebook
       </NavLink>
     )}
   </nav>

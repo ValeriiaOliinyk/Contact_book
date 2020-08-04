@@ -9,6 +9,7 @@ import Container from '../src/components/Container';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import MainLoader from '../src/components/MainLoader';
 
 const HomeView = lazy(() => import('../src/views/HomeView'));
 const PhonebookView = lazy(() => import('../src/views/PhonebookView'));
@@ -23,7 +24,7 @@ class App extends Component {
     return (
       <Container>
         <AppBar />
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<MainLoader />}>
           <Switch>
             <Route exact path="/" component={HomeView} />
             <PublicRoute

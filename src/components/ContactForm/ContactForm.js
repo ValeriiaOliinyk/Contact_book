@@ -61,9 +61,10 @@ class ContactForm extends Component {
             type="text"
             value={number}
             name="number"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
             onChange={this.updateContacts}
             className={styles.input}
-            placeholder="Type number... "
+            placeholder="Type number 289-48-27"
           />
         </label>
         <br />

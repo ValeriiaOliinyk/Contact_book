@@ -1,27 +1,12 @@
 import React from 'react';
-
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import '../styles/Homeview.scss';
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
-      Create your own phonebook
-      <span role="img" aria-label="Иконка приветствия">
-        🦕
-      </span>
-    </h1>
+  <div className="Home__box">
+    <div className="Home__container">
+      <h1 className="Home__title">Create your own phonebook</h1>
+      <div className="Home__image"></div>
+    </div>
   </div>
 );
 
