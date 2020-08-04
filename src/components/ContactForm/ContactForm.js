@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { contactsOperations } from '../../redux/phonebook';
-import styles from './ContactForm.module.css';
+import './Contact.scss';
 
 class ContactForm extends Component {
   state = { name: '', number: '' };
@@ -43,19 +43,19 @@ class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
-        <label>
+      <form onSubmit={this.handleSubmit} className="Form__label">
+        <label className="Contacts__data">
           Name <br />
           <input
             type="text"
             value={name}
             name="name"
             onChange={this.updateContacts}
-            className={styles.input}
+            className="Form__input"
             placeholder="Type name... "
           />
         </label>
-        <label className={styles.label}>
+        <label className="Contacts__data">
           Number <br />
           <input
             type="text"
@@ -63,12 +63,12 @@ class ContactForm extends Component {
             name="number"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
             onChange={this.updateContacts}
-            className={styles.input}
+            className="Form__input"
             placeholder="Type number 289-48-27"
           />
         </label>
         <br />
-        <button type="submit" className={styles.button}>
+        <button type="submit" className="Form__btn">
           Add contact
         </button>
       </form>

@@ -1,13 +1,14 @@
 @import 'styles/shared.scss';
 
-.AuthNav__link {
+.Navigation__link {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
   color: $border-color;
+  font-size: 18px;
 }
 
-.AutNav__active {
+.Navigation__active {
   color: $main;
 }

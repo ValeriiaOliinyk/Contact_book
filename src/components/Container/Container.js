@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Container.module.css';
+import './Container.scss';
 
-const Container = ({ children }) => (
-  <div className={styles.container}>{children}</div>
-);
+const Container = ({ children }) => <div className="Container">{children}</div>;
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,

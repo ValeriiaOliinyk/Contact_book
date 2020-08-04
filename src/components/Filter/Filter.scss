@@ -1,4 +1,12 @@
-.input {
+@import 'styles/shared.scss';
+
+.Filter__label {
+  font-size: 20px;
+  font-weight: 700;
+  color: $line-color;
+}
+
+.Filter__input {
   outline: unset;
   display: block;
   margin: auto;

@@ -1,9 +1,11 @@
-.title {
+@import 'styles/shared.scss';
+
+.Section__title {
   text-align: center;
   color: rgb(85, 158, 163);
 }
 
-.box {
+.Section__box {
   width: 400px;
   padding: 30px 0;
   margin: auto;

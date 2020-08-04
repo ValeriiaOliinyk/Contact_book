@@ -2,31 +2,24 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
-
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#7a8586',
-  },
-  activeLink: {
-    color: '#3c6b6e',
-  },
-};
+import '../../styles/Navigation.scss';
 
 const Navigation = ({ isAuthenticated }) => (
   <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+    <NavLink
+      to="/"
+      exact
+      className="Navigation__link"
+      activeClassName="Navigation__active"
+    >
       Home
     </NavLink>
     {isAuthenticated && (
       <NavLink
         to="/contatcs"
         exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
+        className="Navigation__link"
+        activeClassName="Navigation__active"
       >
         Phonebook
       </NavLink>
