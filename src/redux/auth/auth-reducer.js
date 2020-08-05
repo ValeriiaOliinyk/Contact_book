@@ -6,7 +6,7 @@ import authOperations from './auth-operations';
 const initialUserState = { name: null, email: null };
 
 const user = createReducer(initialUserState, {
-  [authOperations.register]: (_, { payload }) => payload.user,
+  [authOperations.registerSuccess]: (_, { payload }) => payload.user,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: (_, __) => initialUserState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,

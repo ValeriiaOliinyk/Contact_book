@@ -10,7 +10,7 @@ import './UserMenu.scss';
 const UserMenu = ({ avatar, name, onLogout }) => (
   <div className="User__container">
     <img src={avatar} alt="avatar" className="User__avatar" />
-    <span className="User__name">Welcome, {name}</span>
+    <div className="User__name">Welcome, {name}</div>
     <BtnHelper type="button" onClick={onLogout}>
       <LogOutIcon width="23" height="23" fill="white" />
     </BtnHelper>
@@ -18,7 +18,7 @@ const UserMenu = ({ avatar, name, onLogout }) => (
 );
 
 UserMenu.defaultProps = {
-  name: '',
+  name: 'user',
   avatar: '',
 };
 
