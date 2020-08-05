@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
   <ul className="Contacts__list ">
-    {contacts &&
+    {contacts.length >= 1 ? (
       contacts.map(({ name, number, id }) => (
         <li key={id} className="Contacts__item ">
           <Contact
@@ -16,7 +16,10 @@ const ContactList = ({ contacts, onDeleteContact }) => (
             id={id}
           />
         </li>
-      ))}
+      ))
+    ) : (
+      <p className="Contacts__zero">No contacts found</p>
+    )}
   </ul>
 );
 

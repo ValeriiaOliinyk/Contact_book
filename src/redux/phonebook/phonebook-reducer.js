@@ -29,7 +29,17 @@ const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-const error = createReducer(null, {});
+const error = createReducer(null, {
+  [contactsOperations.fetchContacts.fulfilled]: () => null,
+  [contactsOperations.fetchContacts.rejected]: (_, { payload }) =>
+    JSON.stringify(payload.message),
+  [contactsOperations.addContact.pending]: () => null,
+  [contactsOperations.addContact.rejected]: (_, { payload }) =>
+    JSON.stringify(payload.message),
+  [contactsOperations.deleteContact.pending]: () => null,
+  [contactsOperations.deleteContact.rejected]: (_, { payload }) =>
+    JSON.stringify(payload.message),
+});
 
 export default combineReducers({
   contacts,

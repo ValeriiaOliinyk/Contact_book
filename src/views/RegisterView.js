@@ -19,9 +19,7 @@ class RegisterView extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onRegister(this.state);
-
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -40,6 +38,7 @@ class RegisterView extends Component {
             className="Register__input"
             type="text"
             name="name"
+            required
             value={name}
             placeholder="Login *"
             onChange={this.handleChange}
@@ -49,6 +48,7 @@ class RegisterView extends Component {
             className="Register__input"
             type="email"
             name="email"
+            required
             value={email}
             placeholder="Email *"
             onChange={this.handleChange}
@@ -58,6 +58,7 @@ class RegisterView extends Component {
             className="Register__input"
             type="password"
             name="password"
+            required
             placeholder="Password *"
             value={password}
             onChange={this.handleChange}

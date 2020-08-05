@@ -4,6 +4,7 @@ import Navigation from '../Navigation';
 import UserMenu from '../UserMenu';
 import AuthNav from '../AuthNav';
 import { authSelectors } from '../../redux/auth';
+import PropTypes from 'prop-types';
 import './AppBar.scss';
 
 const AppBar = ({ isAuthenticated }) => (
@@ -16,5 +17,9 @@ const AppBar = ({ isAuthenticated }) => (
 const mapStateToProps = state => ({
   isAuthenticated: authSelectors.getIsAuthenticated(state),
 });
+
+AppBar.prototypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+};
 
 export default connect(mapStateToProps)(AppBar);

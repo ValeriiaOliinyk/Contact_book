@@ -1,5 +1,6 @@
 import React from 'react';
 import './Title.scss';
+import PropTypes from 'prop-types';
 
 const Title = ({ text }) => (
   <>
@@ -9,5 +10,13 @@ const Title = ({ text }) => (
     </div>
   </>
 );
+
+Title.defaultProps = {
+  text: '',
+};
+
+Title.prototypes = {
+  text: PropTypes.string,
+};
 
 export default Title;

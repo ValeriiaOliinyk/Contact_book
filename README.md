@@ -1,5 +1,1 @@
-- 1.Переписать все на createAsyncThunk
-- 2.Навести красоту
-- 3.Добавить пропы
-- 4.Прописать штуки для Suspense
-- 5.Сделать всякое для ошибок
+With phonebook you can add contacts, filter them and delete.

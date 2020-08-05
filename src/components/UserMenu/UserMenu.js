@@ -4,6 +4,7 @@ import { authSelectors, authOperations } from '../../redux/auth';
 import defaultAvatar from './sauropod.png';
 import { ReactComponent as LogOutIcon } from './logout.svg';
 import BtnHelper from '../BtnHelper';
+import PropTypes from 'prop-types';
 import './UserMenu.scss';
 
 const UserMenu = ({ avatar, name, onLogout }) => (
@@ -15,6 +16,18 @@ const UserMenu = ({ avatar, name, onLogout }) => (
     </BtnHelper>
   </div>
 );
+
+UserMenu.defaultProps = {
+  name: '',
+  avatar: '',
+};
+
+UserMenu.prototypes = {
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+  onLogout: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   name: authSelectors.getUsername(state),
   avatar: defaultAvatar,

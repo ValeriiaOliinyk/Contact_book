@@ -18,9 +18,7 @@ class LoginView extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onLogin(this.state);
-
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -41,6 +39,7 @@ class LoginView extends Component {
             type="email"
             name="email"
             placeholder="Email *"
+            required
             value={email}
             onChange={this.handleChange}
           />
@@ -48,6 +47,7 @@ class LoginView extends Component {
             className="Login__input"
             type="password"
             name="password"
+            required
             placeholder="Password *"
             value={password}
             onChange={this.handleChange}

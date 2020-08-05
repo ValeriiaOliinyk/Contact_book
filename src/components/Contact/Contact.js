@@ -2,6 +2,7 @@ import React from 'react';
 import './Contact.scss';
 import BtnHelper from '../BtnHelper';
 import { ReactComponent as Delete } from './delete.svg';
+import PropTypes from 'prop-types';
 
 const Contact = ({ name, number, onDeleteContact }) => (
   <>
@@ -13,5 +14,16 @@ const Contact = ({ name, number, onDeleteContact }) => (
     </BtnHelper>
   </>
 );
+
+Contact.defaultProps = {
+  name: '',
+  number: '',
+};
+
+Contact.prototypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  onDeleteContact: PropTypes.func.isRequired,
+};
 
 export default Contact;

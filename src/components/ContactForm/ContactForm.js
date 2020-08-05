@@ -4,9 +4,13 @@ import { contactsOperations } from '../../redux/phonebook';
 import './Contact.scss';
 
 class ContactForm extends Component {
-  state = { name: '', number: '' };
+  state = { name: '', number: '', error: null };
 
   updateContacts = e => {
+    const { error } = this.state;
+    if (error) {
+      this.setState({ error: null });
+    }
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -25,13 +29,13 @@ class ContactForm extends Component {
     e.preventDefault();
 
     if (name === '') {
-      alert(`Add name please!`);
+      this.setState({ error: `Add name please` });
       this.reset();
       return;
     }
 
     if (this.getSameName(name)) {
-      alert(`${name.trim()} is already in contacts`);
+      this.setState({ error: `${name.trim()} is already in contacts` });
       this.reset();
       return;
     }
@@ -40,7 +44,7 @@ class ContactForm extends Component {
   };
 
   render() {
-    const { name, number } = this.state;
+    const { name, number, error } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit} className="Form__label">
@@ -68,9 +72,13 @@ class ContactForm extends Component {
           />
         </label>
         <br />
-        <button type="submit" className="Form__btn">
-          Add contact
-        </button>
+        {error ? (
+          <p className="Form__error">{error}</p>
+        ) : (
+          <button type="submit" className="Form__btn">
+            Add contact
+          </button>
+        )}
       </form>
     );
   }
