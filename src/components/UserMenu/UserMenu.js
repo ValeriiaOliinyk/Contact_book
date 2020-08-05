@@ -18,7 +18,7 @@ const UserMenu = ({ avatar, name, onLogout }) => (
 );
 
 UserMenu.defaultProps = {
-  name: 'user',
+  name: '',
   avatar: '',
 };
 
