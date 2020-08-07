@@ -4,8 +4,6 @@ import { authOperations } from '../redux/auth';
 import FormContainer from '../components/FormContainer';
 import Title from '../components/Title';
 import Button from '../components/Button';
-import Error from '../components/Error';
-import { authSelectors } from '../redux/auth';
 import '../styles/Register.scss';
 
 class RegisterView extends Component {
@@ -13,7 +11,6 @@ class RegisterView extends Component {
     name: '',
     email: '',
     password: '',
-    errorMessage: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -28,14 +25,10 @@ class RegisterView extends Component {
 
   render() {
     const { name, email, password } = this.state;
-    const { error } = this.props;
 
     return (
       <FormContainer>
         <Title text={'Sign up'} />
-        {error && (
-          <Error text="Something went wrong please try again or use another name or email" />
-        )}
         <form
           className="Register__form"
           onSubmit={this.handleSubmit}
@@ -81,12 +74,8 @@ class RegisterView extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  error: authSelectors.getError(state),
-});
-
 const mapDispatchToProps = {
   onRegister: authOperations.register,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterView);
+export default connect(null, mapDispatchToProps)(RegisterView);

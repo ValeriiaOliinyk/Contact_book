@@ -18,14 +18,10 @@ const token = createReducer(null, {
 });
 
 const error = createReducer(null, {
-  [authActions.registerError]: () => true,
   [authActions.loginError]: () => true,
   [authActions.logoutError]: () => true,
-  [authActions.getCurrentUserError]: () => true,
-  [authActions.registerSuccess]: () => false,
   [authActions.loginSuccess]: () => false,
   [authActions.logoutSuccess]: () => false,
-  [authActions.getCurrentUserSuccess]: () => false,
 });
 
 const isAuthenticated = createReducer(false, {

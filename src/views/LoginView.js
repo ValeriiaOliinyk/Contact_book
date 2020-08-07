@@ -4,8 +4,6 @@ import { authOperations } from '../redux/auth';
 import FormContainer from '../components/FormContainer';
 import Title from '../components/Title';
 import Button from '../components/Button';
-import { authSelectors } from '../redux/auth';
-import Error from '../components/Error';
 import '../styles/Login.scss';
 
 class LoginView extends Component {
@@ -27,15 +25,12 @@ class LoginView extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { error } = this.props;
 
     return (
       <FormContainer>
         <Title text={'Sign in'} />
-        {error && <Error text="Invalid email or password" />}
         <form
           className="Login__form"
-          noValidate
           onSubmit={this.handleSubmit}
           autoComplete="off"
         >
@@ -52,6 +47,8 @@ class LoginView extends Component {
             className="Login__input"
             type="password"
             name="password"
+            minLength="9"
+            maxLength="10"
             required
             placeholder="Password *"
             value={password}
@@ -64,12 +61,8 @@ class LoginView extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  error: authSelectors.getError(state),
-});
-
 const mapDispatchToProps = {
   onLogin: authOperations.logIn,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
+export default connect(null, mapDispatchToProps)(LoginView);
