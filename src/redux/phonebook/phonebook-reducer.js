@@ -15,7 +15,7 @@ const contacts = createReducer([], {
 
 const loading = createReducer(false, {
   [contactsOperations.addContact.pending]: () => true,
-  [contactsOperations.addContact.fulfilled]: () => true,
+  [contactsOperations.addContact.fulfilled]: () => false,
   [contactsOperations.addContact.rejected]: () => false,
   [contactsOperations.deleteContact.pending]: () => true,
   [contactsOperations.deleteContact.fulfilled]: () => false,

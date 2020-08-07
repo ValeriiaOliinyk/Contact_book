@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getLoading } from '../redux/phonebook/phonebook-selectors';
 
 // Components
 import Container from '../components/Container';
@@ -10,6 +11,7 @@ import Filter from '../components/Filter';
 import ContactForm from '../components/ContactForm';
 import ContactList from '../components/ContactList';
 import Total from '../components/Total';
+import MainLoder from '../components/MainLoader';
 import { contactsOperations } from '../redux/phonebook';
 
 class PhonebookViews extends Component {
@@ -19,15 +21,20 @@ class PhonebookViews extends Component {
 
   render() {
     const { contacts } = this.props;
+    const { isLoadingContacts } = this.props;
+    console.log(isLoadingContacts);
     return (
       <Container>
         <Section title="Phonebook">
           <ContactForm />
         </Section>
         <Section title="Contacts">
-          {contacts.length >= 2 && <Filter />}
+          {contacts.length >= 1 && <Filter />}
+          {isLoadingContacts && <MainLoder />}
           <ContactList />
-          {contacts.length >= 1 && <Total total={contacts.length} />}
+          {contacts && contacts.length >= 1 && (
+            <Total total={contacts.length} />
+          )}
         </Section>
       </Container>
     );
@@ -44,8 +51,9 @@ PhonebookViews.propTypes = {
   ),
 };
 
-const mapStateToProps = ({ contacts: { contacts } }) => ({
-  contacts: contacts,
+const mapStateToProps = state => ({
+  contacts: state.contacts.contacts,
+  isLoadingContacts: getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -16,7 +16,7 @@ const Navigation = ({ isAuthenticated }) => (
     </NavLink>
     {isAuthenticated && (
       <NavLink
-        to="/contatcs"
+        to="/contacts"
         exact
         className="Navigation__link"
         activeClassName="Navigation__active"

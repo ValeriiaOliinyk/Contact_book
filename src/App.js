@@ -45,10 +45,10 @@ class App extends Component {
               path="/login"
               restricted
               component={LoginView}
-              redirectTo="/contatcs"
+              redirectTo="/contacts"
             />
             <PrivateRoute
-              path="/contatcs"
+              path="/contacts"
               component={PhonebookView}
               redirectTo="/login"
             />

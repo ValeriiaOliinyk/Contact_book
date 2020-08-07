@@ -4,14 +4,16 @@ export const getFilter = ({ contacts }) => contacts.filter;
 
 export const getError = state => state.contacts.error;
 
-const getAllContatcs = ({ contacts: { contacts } }) => contacts;
+export const getLoading = state => state.contacts.loading;
+
+const getAllContacts = ({ contacts: { contacts } }) => contacts;
 
 export const getVisibleContacts = createSelector(
-  [getAllContatcs, getFilter],
-  (contatcs, filter) => {
+  [getAllContacts, getFilter],
+  (contacts, filter) => {
     const normalizedFilter = filter.toLocaleLowerCase();
 
-    return contatcs.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   },
