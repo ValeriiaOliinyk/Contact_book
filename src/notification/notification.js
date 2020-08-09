@@ -5,7 +5,7 @@ import PNotify from 'pnotify/dist/es/PNotify';
 const showError = () => {
   PNotify.error({
     text: 'Sometnig went wrong, try another email or password!',
-    delay: 2000,
+    delay: 3000,
     stack: {
       dir1: 'down',
       dir2: 'right',
