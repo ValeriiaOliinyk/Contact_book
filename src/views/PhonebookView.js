@@ -22,7 +22,6 @@ class PhonebookViews extends Component {
   render() {
     const { contacts } = this.props;
     const { isLoadingContacts } = this.props;
-    console.log(isLoadingContacts);
     return (
       <Container>
         <Section title="Phonebook">

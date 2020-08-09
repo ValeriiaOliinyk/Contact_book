@@ -10,7 +10,6 @@ class LoginView extends Component {
   state = {
     email: '',
     password: '',
-    errorMessage: false,
   };
 
   handleChange = ({ target: { name, value } }) => {

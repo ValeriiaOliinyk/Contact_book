@@ -3,6 +3,8 @@ import React, { Component, Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
+import { authSelectors } from '../src/redux/auth';
+import notification from './notification/notification';
 
 // Components
 import Container from '../src/components/Container';
@@ -26,9 +28,12 @@ const LoginView = lazy(() =>
 
 class App extends Component {
   componentDidMount() {
-    this.props.onGetCurretnUser();
+    const { onGetCurretnUser } = this.props;
+    onGetCurretnUser();
   }
   render() {
+    const { errorMessage } = this.props;
+    if (errorMessage) notification.showError();
     return (
       <Container>
         <AppBar />
@@ -59,8 +64,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  errorMessage: authSelectors.getError(state),
+});
+
 const mapDispatchToProps = {
   onGetCurretnUser: authOperations.getCurrentUser,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

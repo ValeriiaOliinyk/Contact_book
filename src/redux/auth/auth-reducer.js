@@ -17,11 +17,13 @@ const token = createReducer(null, {
   [authActions.logoutSuccess]: (_, __) => null,
 });
 
+const setError = (_, { payload }) => payload;
+
 const error = createReducer(null, {
-  [authActions.loginError]: () => true,
-  [authActions.logoutError]: () => true,
-  [authActions.loginSuccess]: () => false,
-  [authActions.logoutSuccess]: () => false,
+  [authActions.registerError]: setError,
+  [authActions.loginError]: setError,
+  [authActions.logoutError]: setError,
+  [authActions.getCurrentUserError]: setError,
 });
 
 const isAuthenticated = createReducer(false, {
