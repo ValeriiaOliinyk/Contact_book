@@ -20,10 +20,14 @@ const token = createReducer(null, {
 const setError = (_, { payload }) => payload;
 
 const error = createReducer(null, {
+  [authActions.registerSuccess]: (_, __) => '',
   [authActions.registerError]: setError,
+  [authActions.loginSuccess]: (_, __) => '',
   [authActions.loginError]: setError,
   [authActions.logoutError]: setError,
+  [authActions.logoutSuccess]: (_, __) => '',
   [authActions.getCurrentUserError]: setError,
+  [authActions.getCurrentUserSuccess]: (_, __) => '',
 });
 
 const isAuthenticated = createReducer(false, {

@@ -5,6 +5,7 @@ import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
 import { authSelectors } from '../src/redux/auth';
 import notification from './notification/notification';
+import PropTypes from 'prop-types';
 
 // Components
 import Container from '../src/components/Container';
@@ -27,6 +28,15 @@ const LoginView = lazy(() =>
 );
 
 class App extends Component {
+  static defaultProps = {
+    errorMessage: '',
+  };
+
+  static propTypes = {
+    onGetCurretnUser: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string,
+  };
+
   componentDidMount() {
     const { onGetCurretnUser } = this.props;
     onGetCurretnUser();
