@@ -41,6 +41,13 @@ class App extends Component {
     const { onGetCurretnUser } = this.props;
     onGetCurretnUser();
   }
+
+  componentWillUnmount() {
+    let { errorMessage } = this.props;
+    errorMessage = '';
+    console.log(`Очистилось ${errorMessage}`);
+  }
+
   render() {
     const { errorMessage } = this.props;
     if (errorMessage) notification.showError();
