@@ -4,71 +4,67 @@ import { authOperations } from '../redux/auth';
 import FormContainer from '../components/FormContainer';
 import Title from '../components/Title';
 import Button from '../components/Button';
+import LogMessage from '../components/LogError';
+import { Formik, ErrorMessage } from 'formik';
+import BasicFormSchema from '../helpers/validation';
 import '../styles/Register.scss';
 
 class RegisterView extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-  };
-
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.onRegister(this.state);
-    this.setState({ name: '', email: '', password: '' });
-  };
-
   render() {
-    const { name, email, password } = this.state;
-
     return (
       <FormContainer>
         <Title text={'Sign up'} />
-        <form
-          className="Register__form"
-          onSubmit={this.handleSubmit}
-          autoComplete="off"
+        <Formik
+          initialValues={{ email: '', password: '', name: '' }}
+          onSubmit={(data, { resetForm }) => {
+            this.props.onRegister(data);
+            resetForm({});
+          }}
+          validationSchema={BasicFormSchema}
         >
-          <input
-            className="Register__input"
-            type="text"
-            name="name"
-            required
-            minLength="4"
-            maxLength="9"
-            value={name}
-            placeholder="Login *"
-            onChange={this.handleChange}
-          />
-
-          <input
-            className="Register__input"
-            type="email"
-            name="email"
-            required
-            value={email}
-            placeholder="Email *"
-            onChange={this.handleChange}
-          />
-
-          <input
-            className="Register__input"
-            type="password"
-            name="password"
-            required
-            minLength="9"
-            maxLength="10"
-            placeholder="Password *"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <Button type="submit" text={'Sign up'}></Button>
-        </form>
+          {({ values, handleChange, handleSubmit }) => (
+            <form
+              className="Register__form"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
+              <input
+                className="Register__input"
+                type="text"
+                name="name"
+                value={values.name}
+                placeholder="Login *"
+                onChange={handleChange}
+              />
+              <ErrorMessage name="name">
+                {msg => <LogMessage message={msg} />}
+              </ErrorMessage>
+              <input
+                className="Register__input"
+                type="email"
+                name="email"
+                value={values.email}
+                placeholder="Email *"
+                onChange={handleChange}
+              />
+              <ErrorMessage name="email">
+                {msg => <LogMessage message={msg} />}
+              </ErrorMessage>
+              <input
+                className="Register__input"
+                type="password"
+                name="password"
+                placeholder="Password *"
+                value={values.password}
+                onChange={handleChange}
+              />
+              <ErrorMessage name="password">
+                {msg => <LogMessage message={msg} />}
+              </ErrorMessage>
+              <Button type="submit" text={'Sign up'}></Button>
+            </form>
+          )}
+        </Formik>
       </FormContainer>
     );
   }

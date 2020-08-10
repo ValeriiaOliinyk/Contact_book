@@ -4,8 +4,9 @@ import { authOperations } from '../redux/auth';
 import FormContainer from '../components/FormContainer';
 import Title from '../components/Title';
 import Button from '../components/Button';
+import LogMessage from '../components/LogError';
 import { Formik, ErrorMessage } from 'formik';
-import BasicFormSchema from '../helpers/validation';
+import schema from '../helpers/validationLog';
 import '../styles/Login.scss';
 
 class LoginView extends Component {
@@ -15,11 +16,11 @@ class LoginView extends Component {
         <Title text={'Sign in'} />
         <Formik
           initialValues={{ email: '', password: '' }}
-          onSubmit={data => {
-            console.log(data);
+          onSubmit={(data, { resetForm }) => {
             this.props.onLogin(data);
+            resetForm({});
           }}
-          validationSchema={BasicFormSchema}
+          validationSchema={schema}
         >
           {({ values, handleChange, handleSubmit }) => (
             <form
@@ -36,7 +37,7 @@ class LoginView extends Component {
                 onChange={handleChange}
               />
               <ErrorMessage name="email">
-                {msg => <div className="Login__error">{msg}</div>}
+                {msg => <LogMessage message={msg} />}
               </ErrorMessage>
               <input
                 className="Login__input"
@@ -47,7 +48,7 @@ class LoginView extends Component {
                 onChange={handleChange}
               />
               <ErrorMessage name="password">
-                {msg => <div className="Login__error">{msg}</div>}
+                {msg => <LogMessage message={msg} />}
               </ErrorMessage>
               <Button type="submit" text={'Sign in'}></Button>
             </form>
